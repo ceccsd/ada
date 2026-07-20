@@ -7,7 +7,7 @@ int my_max(int a, int b)
 
 int val[20],wt[20],n,c,v[20][20];
 
-// build a matrix(v[i][j]) with the weight bounds as the columns and the number of items as the rows.
+
 int knap()
 {
     int i,j;
@@ -57,7 +57,7 @@ int main()
     printf("\n\nOptimal solution is : %d",opt);
     printf("\n\n The selected items are : ");
 
-    while(n>0)   // best subset with weight at most knapsack size
+    while(n>0)   
     {
         if(v[n][c] != v[n-1][c])
         {
