@@ -1,64 +1,61 @@
-#include<stdio.h>
-void prims( );
-int nearest[10], cost[10][10], t[10][2], i, j, n, k, min, u, mincost = 0;
+#include <stdio.h>
 
-int main( )
+#define MAX 10
+#define INF 999
+
+void prims(int n, int cost[MAX][MAX])
 {
-    printf("\n\n************** PRIMS ALGORITHM **************\n\n");
-    printf("Enter the number of nodes\n");
-    scanf("%d", &n);
+    int mincost = 0;
+    int i, j, k, u, min;
+    int nearest[MAX];
 
-    printf("\n\nEnter the cost matrix\n");
-    for(i=1; i<=n; i++)
-        for(j=1; j<=n; j++)
-            scanf("%d", &cost[i][j]);
+    for(i = 2; i <= n; i++)
+        nearest[i] = 1;
+         nearest[1] = 0;
 
-    printf("\n\nThe entered cost matrix is\n");
-    for(i=1; i<=n; i++)
+    printf("\nEdges in the Minimum Spanning Tree:\n");
+
+    for(i = 1; i < n; i++)
     {
-        for(j=1; j<=n; j++)
-            printf("%d\t", cost[i][j]);
-        printf("\n");
-    }
+        min = INF;
 
-    printf("\n\nMinimum Spanning Tree Edges and their costs are\n");
-    prims( );
-
-    printf("\n\nThe minimum spanning tree cost is %d", mincost);
-    printf("\n\n******* ******************************** *******\n");
-    return 0;
-}
-
-void prims()
-{
-    for(i=2; i<=n; i++)
-        nearest[i]=1;     
-    nearest[1]=0;           
-
-    for(i=1; i<n; i++)
-    {
-        min=99;
-        for(j=1; j<=n; j++) 
+        for(j = 2; j <= n; j++)
         {
-            if(nearest[j]!=0 && cost[j][nearest[j]]<min)
+            if(nearest[j] != 0 && cost[j][nearest[j]] < min)
             {
-                min=cost[j][nearest[j]];
-                u=j;
+                min = cost[j][nearest[j]];
+                u = j;
             }
         }
 
-        t[i][1] = u;              
-        t[i][2] = nearest[u];     
-        mincost += min;           
-        nearest[u] = 0;           
+        printf("%d> Edge (%d, %d) Cost = %d\n", i, u, nearest[u], min);
 
+        mincost += min;
+        nearest[u] = 0;
 
-        for(k=1; k<=n; k++)
+        for(k = 2; k <= n; k++)
         {
             if(nearest[k] != 0 && cost[k][nearest[k]] > cost[k][u])
                 nearest[k] = u;
         }
-
-        printf("%d) edge (%d,%d) , cost %d\n", i, t[i][1], t[i][2], min);
     }
+
+    printf("\nMinimum Cost = %d\n", mincost);
+}
+
+int main()
+{
+    int n, cost[MAX][MAX];
+
+    printf("Enter number of nodes: ");
+    scanf("%d", &n);
+
+    printf("Enter cost matrix:\n");
+    for(int i = 1; i <= n; i++)
+        for(int j = 1; j <= n; j++)
+            scanf("%d", &cost[i][j]);
+
+    prims(n, cost);
+
+    return 0;
 }
