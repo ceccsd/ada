@@ -26,10 +26,10 @@ printf("\n");
 topo( );
 return 0;
 }
-void topo( ) //function definition
+void topo( ) 
 {
 int v[10], in=1, flag=0, count=0, f=1;
-while(f) //checking for all possibilities
+while(f) 
 {
 count++;
 for(i=1;i<=n;i++)
@@ -37,7 +37,7 @@ for(i=1;i<=n;i++)
 flag = 0;
 for(j=1; j<=n; j++)
 {
-if(ad[j][i] != 0 || v[j]==i) //if there is no incoming edge or if the node is already visited
+if(ad[j][i] != 0 || v[j]==i) 
 {
 flag = 1;
 break;
