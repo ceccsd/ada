@@ -20,14 +20,14 @@ while(i<=j)
 {
 do
  i++;
- while(a[i]<=p) ; //find elt>p
+ while(a[i]<=p) ; 
 do
  j--;
-while(a[j]>p); //find elt<p
+while(a[j]>p); 
 if(i<j)
 swap(&a[i],&a[j]);
 }
-swap(&a[left],&a[j]); //swap pivot and a[j]
+swap(&a[left],&a[j]); 
 return j;
 }
 
@@ -49,7 +49,7 @@ int *a;
 printf("Enter the number of elements:");
 scanf("%d", &n);
 
-a = (int *)malloc((n+1) * sizeof(int)); // n+1 to safely hold the sentinel
+a = (int *)malloc((n+1) * sizeof(int)); 
 
 for (int i = 0; i < n; i++)
 {
@@ -61,7 +61,7 @@ for (int i = 0; i < n; i++)
 printf("%d\t ", a[i]);
 }
 printf("\n");
-a[n]=9999; // sentinel value, now safely within allocated memory
+a[n]=9999; 
 
 clock_t start = clock();
 quicksort(a,0,n-1);
