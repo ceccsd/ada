@@ -33,15 +33,15 @@ int main( )
         printf("\n");
     }
 
-    optimal( );  // call optimal function
+    optimal( );  
     return 0;
 }
 
-void knapsack( )  /* function to prepare the knapsack table */
+void knapsack( )  
 {
-    for(i=0; i<=n; i++)          // every individual item i
+    for(i=0; i<=n; i++)          
     {
-        for(j=0; j<=m; j++)      // for the available knapsack capacity j
+        for(j=0; j<=m; j++)      
         {
             if(i==0 || j==0)
                 v[i][j]=0;
@@ -53,7 +53,7 @@ void knapsack( )  /* function to prepare the knapsack table */
     }
 }
 
-void optimal( )  /* function to find the optimal solution */
+void optimal( )  
 {
     int i = n, j = m;
     while( i != 0 && j != 0)
@@ -70,7 +70,7 @@ void optimal( )  /* function to find the optimal solution */
         if(x[i] == 1)
         {
             printf("%d, ", i);
-            item=1;   // flag item is set if there are any items that can be placed in Knapsack
+            item=1;   
         }
     printf("\b\b ");
 
