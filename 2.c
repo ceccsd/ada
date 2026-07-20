@@ -32,13 +32,13 @@ int main( )
 void prims()
 {
     for(i=2; i<=n; i++)
-        nearest[i]=1;      // Initializing nearest nodes to all nodes other than first node as 1
-    nearest[1]=0;           // Marking the first node as visited
+        nearest[i]=1;     
+    nearest[1]=0;           
 
     for(i=1; i<n; i++)
     {
         min=99;
-        for(j=1; j<=n; j++)  // find a node j which can be visited with minimum cost
+        for(j=1; j<=n; j++) 
         {
             if(nearest[j]!=0 && cost[j][nearest[j]]<min)
             {
@@ -47,13 +47,12 @@ void prims()
             }
         }
 
-        t[i][1] = u;              // marking the node j
-        t[i][2] = nearest[u];     // marking the node from where we visited j
-        mincost += min;           // updating the minimum cost
-        nearest[u] = 0;           // indicating that node u=j has been visited
+        t[i][1] = u;              
+        t[i][2] = nearest[u];     
+        mincost += min;           
+        nearest[u] = 0;           
 
-        // if any remaining unvisited node can be reached from newly visited node with minimum cost
-        // then the newly visited node becomes its nearest node
+
         for(k=1; k<=n; k++)
         {
             if(nearest[k] != 0 && cost[k][nearest[k]] > cost[k][u])
